@@ -8,3 +8,7 @@
 html, body {
   height: 100%;
 }
+
+input:focus, textarea {
+  outline: none !important;
+}
