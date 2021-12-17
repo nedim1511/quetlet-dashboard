@@ -8,15 +8,15 @@
     </div>
     <!--Email Input-->
     <div class="form-group">
-      <input [(ngModel)]="emailAddress" required name="email" type="email" class="form-input" placeholder="Email adresa">
+      <input [(ngModel)]="oldLink" disabled name="text" type="text" class="form-input" placeholder="Stari link">
     </div>
     <!--Password Input-->
     <div class="form-group">
-      <input (keyup.enter)="loginButtonClicked()" [(ngModel)]="code" required type="text" name="code" class="form-input" placeholder="Šifra">
+      <input (keyup.enter)="changeButtonClicked()" [(ngModel)]="newLink" type="text" name="newLink" class="form-input" placeholder="Novi link">
     </div>
     <!--Login Button-->
-    <button class="form-button" type="button" disabled [disabled]="loginButtonDisabled" (click)="loginButtonClicked()">
-      Prijavi se
+    <button (click)="changeButtonClicked()" class="form-button" type="button" [disabled]="changeButtonDisabled">
+      Promijeni link
     </button>
   </form>
 </div>
