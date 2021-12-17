@@ -17,10 +17,14 @@
 
 .login-form {
   width: 350px;
+  height: 350px;
   margin: 0 auto;
   border: 1px solid #ddd;
   padding: 2rem;
   background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form-input {
@@ -44,6 +48,7 @@
   height: 40px;
   width: 100%;
   text-transform: uppercase;
+  margin-top: 1rem;
 }
 
 .form-button:hover {
@@ -59,7 +64,7 @@
 
 .form-header {
   text-align: center;
-  margin: 2em 0;
+  margin-bottom: 1em;
 }
 
 .form-footer {

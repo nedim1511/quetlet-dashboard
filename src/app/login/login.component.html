@@ -15,10 +15,8 @@
       <input [(ngModel)]="code" required type="text" name="code" class="form-input" placeholder="Code">
     </div>
     <!--Login Button-->
-    <div class="form-group">
-      <button class="form-button" type="button" disabled [disabled]="loginButtonDisabled" (click)="loginButtonClicked()">
-        Log in
-      </button>
-    </div>
+    <button class="form-button" type="button" disabled [disabled]="loginButtonDisabled" (click)="loginButtonClicked()">
+      Log in
+    </button>
   </form>
 </div>
