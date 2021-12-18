@@ -3,6 +3,7 @@ import {CommonModule} from "@angular/common";
 import {DashboardRoutingModule} from "./dashboard-routing.module";
 import {DashboardComponent} from "./dashboard.component";
 import {FormsModule} from "@angular/forms";
+import {CanActivateDashboard} from "./dashboard.guard";
 
 @NgModule({
   imports: [
@@ -13,5 +14,8 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     DashboardComponent
   ],
+  providers: [
+    CanActivateDashboard,
+  ]
 })
 export class DashboardModule {}

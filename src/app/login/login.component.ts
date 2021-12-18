@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import {LoginService} from "./login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,10 @@ export class LoginComponent {
   public loginButtonDisabled: boolean;
   public errorMessage: string | undefined;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+  ) {
     this.loginButtonDisabled = false;
   }
 
@@ -24,8 +29,13 @@ export class LoginComponent {
     this.loginButtonDisabled = true;
 
     if (this.isFormValid()) {
-      // Change
-      // Pogrešna email adresa ili šifra
+      if (!this.emailAddress || !this.code) return;
+
+      this.loginService.login(this.emailAddress, this.code)
+        .subscribe((user) => {
+          this.loginService.setUser(user);
+          this.router.navigate(['/dashboard']);
+        }, (error) => this.setError(error?.error?.error ?? 'Pogrešna email adresa ili šifra.'))
     }
   }
 

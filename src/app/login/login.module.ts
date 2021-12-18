@@ -8,10 +8,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     FormsModule,
     CommonModule,
-    LoginRoutingModule,
+    LoginRoutingModule
   ],
-  declarations: [
-    LoginComponent,
-  ]
+  declarations: [LoginComponent],
 })
 export class LoginModule {}
