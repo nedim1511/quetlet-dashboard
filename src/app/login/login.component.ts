@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [
+    '../layout/checkmark.css',
     '../layout/flexbox.css',
     '../layout/form.css',
   ],
@@ -14,6 +15,7 @@ export class LoginComponent {
   public code: string | undefined;
   public emailAddress: string | undefined;
 
+  public isLoginSuccessful: boolean;
   public loginButtonDisabled: boolean;
   public errorMessage: string | undefined;
 
@@ -21,6 +23,7 @@ export class LoginComponent {
     private router: Router,
     private loginService: LoginService,
   ) {
+    this.isLoginSuccessful = false;
     this.loginButtonDisabled = false;
   }
 
@@ -33,8 +36,11 @@ export class LoginComponent {
 
       this.loginService.login(this.emailAddress, this.code)
         .subscribe((user) => {
+          this.isLoginSuccessful = true;
           this.loginService.setUser(user);
-          this.router.navigate(['/dashboard']);
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']);
+          }, 1500);
         }, (error) => this.setError(error?.error?.error ?? 'Pogrešna email adresa ili šifra.'))
     }
   }
