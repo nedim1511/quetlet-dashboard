@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
   ],
 })
 export class LoginComponent {
-  public code: string | undefined;
+  public pin: string | undefined;
   public emailAddress: string | undefined;
 
   public isLoginSuccessful: boolean;
@@ -32,16 +32,16 @@ export class LoginComponent {
     this.loginButtonDisabled = true;
 
     if (this.isFormValid()) {
-      if (!this.emailAddress || !this.code) return;
+      if (!this.emailAddress || !this.pin) return;
 
-      this.loginService.login(this.emailAddress, this.code)
-        .subscribe((user) => {
+      this.loginService.login(this.emailAddress, this.pin)
+        .subscribe((order) => {
           this.isLoginSuccessful = true;
-          this.loginService.setUser(user);
+          this.loginService.setOrder(order);
           setTimeout(() => {
             this.router.navigate(['/dashboard']);
           }, 1500);
-        }, (error) => this.setError(error?.error?.error ?? 'Pogrešna email adresa ili šifra.'))
+        }, (error) => this.setError(error?.error?.error ?? 'Pogrešna email adresa ili PIN.'))
     }
   }
 
@@ -49,8 +49,8 @@ export class LoginComponent {
     if (!this.emailAddress) {
       this.setError('Email adresa je obavezna.')
       return false;
-    } else if (!this.code) {
-      this.setError('Šifra je obavezna.');
+    } else if (!this.pin) {
+      this.setError('PIN je obavezan.');
       return false;
     }
 

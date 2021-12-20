@@ -1,13 +1,13 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable, tap} from "rxjs";
-import {User} from "../common/models/user.interface";
+import {Observable} from "rxjs";
+import {Order} from "../common/models/order.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private user: User | undefined;
+  private order: Order | undefined;
   private readonly URL = '/api/login';
 
   constructor(
@@ -15,15 +15,15 @@ export class LoginService {
   ) {
   }
 
-  get getUser(): User | undefined {
-    return this.user;
+  get getOrder(): Order | undefined {
+    return this.order;
   }
 
-  public setUser(user: User): void {
-    this.user = user;
+  public setOrder(order: Order): void {
+    this.order = order;
   }
 
-  public login(email: string, code: string): Observable<User> {
-    return this.http.post(this.URL, {email, code})
+  public login(email: string, pin: string): Observable<Order> {
+    return this.http.post(this.URL, {email, pin})
   }
 }

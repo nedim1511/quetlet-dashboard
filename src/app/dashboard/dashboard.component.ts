@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {LoginService} from "../login/login.service";
+import {Order} from "../common/models/order.interface";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +11,18 @@ import {Component, OnInit} from "@angular/core";
   ],
 })
 export class DashboardComponent implements OnInit {
+  public order: Order | undefined;
   public oldLink: string | undefined;
   public newLink: string | undefined;
   public changeButtonDisabled: boolean;
   public errorMessage: string | undefined;
 
-  constructor() {
+  constructor(
+    private loginService: LoginService,
+  ) {
     this.changeButtonDisabled = false;
+    this.order = this.loginService.getOrder;
+    console.log(this.order)
     this.oldLink = "Trenutni link: https://google.ba";
   }
 

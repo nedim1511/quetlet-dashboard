@@ -12,7 +12,7 @@ export class CanActivateDashboard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const user = this.loginService.getUser;
+    const user = this.loginService.getOrder;
 
     if (user) return true;
 
