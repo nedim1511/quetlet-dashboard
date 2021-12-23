@@ -1,28 +1,28 @@
 <div class="wrap">
-  <form class="centered-box">
-    <div class="form-header">
-      <img src="../../assets/images/logo.png" alt="Logo">
-      <div class="error-box" *ngIf="errorMessage">
-        <span>{{ errorMessage }}</span>
-      </div>
-    </div>
+
+  <!-- List of pages -->
+  <form class="centered-box" *ngIf="!activePageId">
+
+    <app-form-header></app-form-header>
 
     <br>
 
     <div class="form-content">
-      <!--Email Input-->
-      <div class="form-group">
-        <input [(ngModel)]="oldLink" disabled name="text" type="text" class="form-input" placeholder="Stari link">
+      <div class="form-group" *ngFor="let page of pages; let i = index">
+        <button
+          class="form-button"
+          type="button"
+          (click)="activePageId = page.id"
+          [class.white-button]="(i + 1) % 2 === 0"
+        >
+            {{ page.name }}
+        </button>
       </div>
-      <!--Password Input-->
-      <div class="form-group">
-        <input (keyup.enter)="changeButtonClicked()" [(ngModel)]="newLink" type="text" name="newLink" class="form-input" placeholder="Novi link">
-      </div>
-      <!--Login Button-->
-      <button (click)="changeButtonClicked()" class="form-button" type="button" [disabled]="changeButtonDisabled">
-        Promijeni link
-      </button>
     </div>
 
   </form>
+
+  <!-- Change link Page -->
+  <app-change-link *ngIf="activePageId === 1" (goToDashboard)="activePageId = undefined"></app-change-link>
+
 </div>

@@ -1,0 +1,9 @@
+<div class="back-button" *ngIf="backButtonVisible" (click)="backButtonClicked.emit()">
+  <img width="32" src="../../../../assets/images/icons/back-arrow.svg" alt="Back Arrow">
+</div>
+<div class="form-header">
+  <img src="../../../../assets/images/logo.png" alt="Logo">
+  <div class="error-box" *ngIf="errorMessage">
+    <span [innerHTML]="errorMessage"></span>
+  </div>
+</div>

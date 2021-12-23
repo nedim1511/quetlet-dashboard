@@ -13,7 +13,7 @@
 
 .form-button {
   background: rgba(0, 0 ,0, 0.9);
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0 ,0, 1);
   color: #ffffff;
   padding: 0 10px;
   height: 40px;
@@ -27,14 +27,20 @@
   background: rgba(0, 0 ,0, 1);
 }
 
+.white-button {
+  background: #fff;
+  border: 1px solid #000;
+  color: rgba(0, 0 ,0, 0.9);
+}
+
+.white-button:hover {
+  background: rgba(251, 251 ,251, 1);
+}
+
 .form-button:disabled,
 .form-button[disabled]{
   cursor: default;
   background: rgba(0, 0 ,0, 0.75);
-}
-
-.form-header {
-  text-align: center;
 }
 
 .form-content {
@@ -46,12 +52,4 @@
 
 .form-footer {
   text-align: center;
-}
-
-.error-box {
-  margin-top: 1rem;
-  color: #842029;
-  background-color: #f8d7da;
-  border-color: #f5c2c7;
-  padding: 0.5rem;
 }

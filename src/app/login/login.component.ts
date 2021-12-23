@@ -1,14 +1,13 @@
 import {Component} from "@angular/core";
-import {LoginService} from "./login.service";
+import {LoginService} from "./services/login.service";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [
-    '../layout/checkmark.css',
-    '../layout/flexbox.css',
     '../layout/form.css',
+    '../layout/flexbox.css',
   ],
 })
 export class LoginComponent {
