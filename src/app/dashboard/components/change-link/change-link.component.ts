@@ -1,7 +1,7 @@
 import {Order} from "../../../common/models/order.interface";
 import {LoginService} from "../../../login/services/login.service";
 import {Component, EventEmitter, Output} from "@angular/core";
-import {DashboardService} from "../../services/dashboard.service";
+import {OrdersService} from "../../services/orders.service";
 
 @Component({
   selector: 'app-change-link',
@@ -23,7 +23,7 @@ export class ChangeLinkComponent {
 
   constructor(
     private loginService: LoginService,
-    private dashboardService: DashboardService,
+    private dashboardService: OrdersService,
   ) {
     this.assignAttributes();
     this.changeButtonDisabled = false;

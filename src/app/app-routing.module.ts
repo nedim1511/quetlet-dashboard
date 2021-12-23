@@ -4,15 +4,19 @@ import {NgModule} from "@angular/core";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'users/login',
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: ':code',
+    loadChildren: () => import('./scan/scan.module').then(m => m.ScanModule),
+  },
+  {
+    path: 'users/login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
   {
-    path: 'dashboard',
+    path: 'users/dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {

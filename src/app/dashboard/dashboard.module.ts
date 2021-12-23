@@ -5,8 +5,8 @@ import {DashboardComponent} from "./dashboard.component";
 import {FormsModule} from "@angular/forms";
 import {CanActivateDashboard} from "./services/dashboard.guard";
 import {ChangeLinkComponent} from "./components/change-link/change-link.component";
-import {DashboardService} from "./services/dashboard.service";
 import {SharedModule} from "../common/shared.module";
+import {ScanHistoryComponent} from "./components/scan-history/scan-history.component";
 
 @NgModule({
   imports: [
@@ -18,9 +18,9 @@ import {SharedModule} from "../common/shared.module";
   declarations: [
     DashboardComponent,
     ChangeLinkComponent,
+    ScanHistoryComponent,
   ],
   providers: [
-    DashboardService,
     CanActivateDashboard,
   ]
 })

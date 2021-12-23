@@ -38,7 +38,7 @@ export class LoginComponent {
           this.isLoginSuccessful = true;
           this.loginService.setOrder(order);
           setTimeout(() => {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/users/dashboard']);
           }, 1500);
         }, (error) => this.setError(error?.error?.error ?? 'Pogrešna email adresa ili PIN.'))
     }

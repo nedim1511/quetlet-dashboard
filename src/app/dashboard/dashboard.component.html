@@ -25,4 +25,7 @@
   <!-- Change link Page -->
   <app-change-link *ngIf="activePageId === 1" (goToDashboard)="activePageId = undefined"></app-change-link>
 
+  <!-- Scan History -->
+  <app-scan-history *ngIf="activePageId === 2" (goToDashboard)="activePageId = undefined"></app-scan-history>
+
 </div>

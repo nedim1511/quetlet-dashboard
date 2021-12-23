@@ -5,8 +5,10 @@ import {Observable, of} from "rxjs";
 import {Order} from "../../common/models/order.interface";
 import {ChangeLink} from "../models/change-link.interface";
 
-@Injectable()
-export class DashboardService {
+@Injectable({
+  providedIn: 'root'
+})
+export class OrdersService {
 
   private readonly URL = '/api';
 
@@ -28,5 +30,9 @@ export class DashboardService {
     }
 
     return this.http.post(this.URL + '/change-link', changeLinkBody);
+  }
+
+  public getOrder(code: string): Observable<Order> {
+    return this.http.get(this.URL + '/orders/' + code);
   }
 }

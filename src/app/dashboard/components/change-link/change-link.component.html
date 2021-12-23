@@ -10,22 +10,23 @@
 
   <div class="form-content" *ngIf="!changeLinkSuccessful">
 
-    <!--Email Input-->
+    <!--Old Link Input-->
     <div class="form-group">
       <input [(ngModel)]="oldLink" disabled name="text" type="text" class="form-input" placeholder="Stari link">
     </div>
 
-    <!--Password Input-->
+    <!--New Link Input-->
     <div class="form-group">
       <input (keyup.enter)="changeButtonClicked()" [(ngModel)]="newLink" type="text" name="newLink" class="form-input" placeholder="Novi link">
     </div>
 
-    <!--Login Button-->
+    <!--Change Link Button-->
     <button (click)="changeButtonClicked()" class="form-button" type="button" [disabled]="changeButtonDisabled">
       Promijeni link
     </button>
   </div>
 
+  <!-- Success Message -->
   <ng-container *ngIf="changeLinkSuccessful">
     <app-success-checkmark [text]="'Link promijenjen.'"></app-success-checkmark>
 
