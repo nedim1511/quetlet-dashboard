@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {OrdersService} from "../dashboard/services/orders.service";
-import {Order} from "../common/models/order.interface";
 import {ScanService} from "./services/scan.service";
 
 @Component({
@@ -31,9 +30,7 @@ export class ScanComponent implements OnInit {
     }
   }
 
-  private recordScan(order: Order): void {
-    if (!order.code || !order.activeUrl) return;
-
+  private recordScan(order: { code: string, activeUrl: string }): void {
     this.scanService.recordScan(order.code, order.activeUrl)
       .subscribe(
         (_) => window.location.href = <string>order.activeUrl,

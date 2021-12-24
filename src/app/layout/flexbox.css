@@ -20,6 +20,11 @@
   position: relative;
 }
 
+.centered-box-lg {
+  width: 90vw;
+  height: auto;
+}
+
 @media screen and (max-width: 486px) {
   .centered-box {
     max-width: 220px;

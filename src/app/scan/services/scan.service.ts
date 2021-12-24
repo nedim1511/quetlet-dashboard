@@ -28,6 +28,10 @@ export class ScanService {
     return this.http.post<Scan>(this.URL + '/scan', scanModelBody);
   }
 
+  public getScansBy(code: string): Observable<Scan[]> {
+    return this.http.get<Scan[]>(this.URL + '/scans/' + code);
+  }
+
   private getDeviceType(): 'mobile' | 'tablet' | 'desktop' | undefined {
     if (this.deviceService.isMobile()) return 'mobile';
     if (this.deviceService.isTablet()) return 'tablet';

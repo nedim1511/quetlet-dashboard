@@ -1,0 +1,39 @@
+<div class="wrap">
+
+  <form class="centered-box centered-box-lg">
+    <app-form-header [backButtonVisible]="true" (backButtonClicked)="goBack()"></app-form-header>
+
+    <br>
+
+    <div class="tabs" *ngIf="analyticsMap.size > 0; else noScans">
+      <div class="tab" *ngFor="let scan of analyticsMap | keyvalue">
+        <input [id]="scan.key" type="radio" name="analytics">
+        <label class="tab-label" [attr.for]="scan.key">
+          {{ scan.key }} - Broj skeniranja: {{ scan.value.length }}
+        </label>
+        <div class="tab-content">
+          <div class="responsive-table-wrapper">
+            <table>
+              <tr>
+                <th>Datum i vrijeme</th>
+                <th>Sistem</th>
+                <th>Uređaj</th>
+                <th>Pretraživač</th>
+              </tr>
+              <tr *ngFor="let info of scan.value">
+                <td>{{ info.date | date: 'd MMM y, HH:mm' }}</td>
+                <td>{{ info.os }}</td>
+                <td>{{ info.device }}</td>
+                <td>{{ info.browser }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noScans>
+      <h1>Još uvijek nema skenova.</h1>
+    </ng-template>
+  </form>
+</div>

@@ -10,16 +10,5 @@ import {Component} from "@angular/core";
   styles: ['.form-group:last-of-type {margin-bottom: 0;}']
 })
 export class DashboardComponent {
-  public pages: { id: number, name: string }[] = [
-    {
-      id: 1,
-      name: 'Promijeni link'
-    },
-    {
-      id: 2,
-      name: 'Vidi analitiku'
-    }
-  ];
-
-  public activePageId: number | undefined;
+  public isChangeLinkActive: boolean | undefined;
 }

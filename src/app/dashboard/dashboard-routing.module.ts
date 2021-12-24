@@ -8,7 +8,11 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     canActivate: [CanActivateDashboard]
-  }
+  },
+  {
+    path: 'analytics',
+    loadChildren: () => import('./modules/analytics/analytics.module').then(m => m.AnalyticsModule),
+  },
 ];
 
 @NgModule({

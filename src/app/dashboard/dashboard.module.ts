@@ -6,19 +6,19 @@ import {FormsModule} from "@angular/forms";
 import {CanActivateDashboard} from "./services/dashboard.guard";
 import {ChangeLinkComponent} from "./components/change-link/change-link.component";
 import {SharedModule} from "../common/shared.module";
-import {ScanHistoryComponent} from "./components/scan-history/scan-history.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
     SharedModule,
+    RouterModule,
     DashboardRoutingModule,
   ],
   declarations: [
     DashboardComponent,
     ChangeLinkComponent,
-    ScanHistoryComponent,
   ],
   providers: [
     CanActivateDashboard,

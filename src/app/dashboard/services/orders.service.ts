@@ -32,7 +32,7 @@ export class OrdersService {
     return this.http.post(this.URL + '/change-link', changeLinkBody);
   }
 
-  public getOrder(code: string): Observable<Order> {
-    return this.http.get(this.URL + '/orders/' + code);
+  public getOrder(code: string): Observable<{ code: string, activeUrl: string }> {
+    return this.http.get<{ code: string, activeUrl: string }>(this.URL + '/orders/' + code);
   }
 }
