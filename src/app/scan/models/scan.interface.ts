@@ -9,5 +9,6 @@ export interface ScanData {
   date: string;
   device: string;
   browser: string;
+  message: string;
   deviceType: string;
 }

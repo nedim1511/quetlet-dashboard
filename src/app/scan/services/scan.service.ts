@@ -15,10 +15,11 @@ export class ScanService {
   ) {
   }
 
-  public recordScan(code: string, url: string): Observable<Scan> {
+  public recordScan(code: string, url: string, message?: string): Observable<Scan> {
     const scanModelBody = {
       code,
       url,
+      message,
       os: this.deviceService.os,
       deviceType: this.getDeviceType(),
       device: this.deviceService.device,

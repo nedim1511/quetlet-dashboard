@@ -1,0 +1,52 @@
+<div class="center" *ngIf="!isLoading">
+  <div class="box">
+    <img src="../../assets/images/logo.png" alt="Quetlet">
+
+    <div class="vertical-margin" *ngIf="errorMessage">
+      <div class="error-alert">
+        {{ errorMessage }}
+      </div>
+    </div>
+
+    <ng-container *ngIf="isRedirectingUser">
+      <div class="vertical-margin">
+        <div class="loader"></div>
+      </div>
+
+      <div class="vertical-margin">
+        <p>Otvaram link...</p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!errorMessage && !isLoading && !isRedirectingUser">
+      <div class="vertical-margin">
+
+        <div class="block" *ngIf="!leaveMessage">
+          <p class="vertical-margin">Želiš li ostaviti poruku skeniranoj osobi?</p>
+        </div>
+
+        <textarea
+          [placeholder]="'Neće znati ko je poslao poruku, ali će je moći pročitati. Maksimalno 100 znakova.'"
+          [(ngModel)]="message"
+          *ngIf="leaveMessage"
+          name="message"
+          id="message"
+          cols="30"
+          rows="3">
+      </textarea>
+      </div>
+
+      <button *ngIf="!leaveMessage" class="form-button" (click)="leaveMessage = true">
+        Da, unesi poruku
+      </button>
+
+      <button [disabled]="!order" class="form-button" [class.white-button]="!leaveMessage" (click)="submitScan()">
+        {{ leaveMessage ? 'Pošalji i' : 'Ne, samo' }} otvori link
+      </button>
+
+      <button *ngIf="leaveMessage" [disabled]="!order" class="form-button white-button" (click)="submitScan()">
+        Otvori link bez poruke
+      </button>
+    </ng-container>
+  </div>
+</div>
