@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {OrdersService} from "../dashboard/services/orders.service";
 import {ScanService} from "./services/scan.service";
 import {Order} from "../common/models/order.interface";
+import {Version} from "../common/models/version.enum";
 
 @Component({
   selector: 'app-scan',
@@ -45,6 +46,7 @@ export class ScanComponent implements OnInit {
   }
 
   public submitScan(): void {
+
     if (!this.order || !this.order.code || !this.order.activeUrl) {
       this.handleError('Došlo je do greške prilikom skeniranja.');
       return;
@@ -53,6 +55,11 @@ export class ScanComponent implements OnInit {
     if (!this.isMessageValid()) return;
 
     this.isRedirectingUser = true;
+
+    if (this.order.version === Version.BASIC) {
+      window.location.href = <string>this.order.activeUrl;
+      return;
+    }
 
     this.scanService.recordScan(this.order.code, this.order.activeUrl, this.message)
       .subscribe(
@@ -75,5 +82,16 @@ export class ScanComponent implements OnInit {
     }
 
     return true;
+  }
+
+  get welcomeMessageText(): string {
+    if (this.order.version === Version.BASIC) {
+      return 'Klikni ispod da posjetiš link skenirane osobe';
+    }
+    return 'Želiš li ostaviti poruku skeniranoj osobi?'
+  }
+
+  get Version() {
+    return Version;
   }
 }

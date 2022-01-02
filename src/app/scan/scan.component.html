@@ -22,7 +22,7 @@
       <div class="vertical-margin">
 
         <div class="block" *ngIf="!leaveMessage">
-          <p class="vertical-margin">Želiš li ostaviti poruku skeniranoj osobi?</p>
+          <p class="vertical-margin">{{ welcomeMessageText }}</p>
         </div>
 
         <textarea
@@ -36,13 +36,15 @@
       </textarea>
       </div>
 
-      <button *ngIf="!leaveMessage" class="form-button" (click)="leaveMessage = true">
-        Da, unesi poruku
-      </button>
+      <ng-container *ngIf="order.version !== Version.BASIC; else basicButton">
+        <button *ngIf="!leaveMessage" class="form-button" (click)="leaveMessage = true">
+          Da, unesi poruku
+        </button>
 
-      <button [disabled]="!order" class="form-button" [class.white-button]="!leaveMessage" (click)="submitScan()">
-        {{ leaveMessage ? 'Pošalji i' : 'Ne, samo' }} otvori link
-      </button>
+        <button [disabled]="!order" class="form-button" [class.white-button]="!leaveMessage" (click)="submitScan()">
+          {{ leaveMessage ? 'Pošalji i' : 'Ne, samo' }} otvori link
+        </button>
+      </ng-container>
 
       <button *ngIf="leaveMessage" [disabled]="!order" class="form-button white-button" (click)="submitScan()">
         Otvori link bez poruke
@@ -50,3 +52,9 @@
     </ng-container>
   </div>
 </div>
+
+<ng-template #basicButton>
+  <button [disabled]="!order" class="form-button" (click)="submitScan()">
+    Posjeti link
+  </button>
+</ng-template>

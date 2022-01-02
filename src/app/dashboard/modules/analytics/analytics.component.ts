@@ -16,12 +16,14 @@ export class AnalyticsComponent implements OnInit {
 
   // Map: url and scanData
   public analyticsMap: Map<string, ScanData[]>;
+  public didGetResponseFromServer: boolean;
 
   constructor(
     private router: Router,
     private scanService: ScanService,
     private loginService: LoginService,
   ) {
+    this.didGetResponseFromServer = false;
     this.analyticsMap = new Map<string, ScanData[]>();
   }
 
@@ -32,7 +34,11 @@ export class AnalyticsComponent implements OnInit {
 
     this.scanService.getScansBy(order.code).subscribe((scans) => {
       scans.forEach((scan) => this.analyticsMap.set(scan.url, scan.data));
-    }, (error) => this.handleError(error?.error?.error ?? 'Došlo je do nepoznate greške. Molimo osvježite stranicu'));
+      this.didGetResponseFromServer = true;
+    }, (error) => {
+      this.handleError(error?.error?.error ?? 'Došlo je do nepoznate greške. Molimo osvježite stranicu');
+      this.didGetResponseFromServer = true;
+    });
   }
 
   public goBack(): void {

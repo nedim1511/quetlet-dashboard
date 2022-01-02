@@ -1,4 +1,4 @@
-<div class="wrap">
+<div class="wrap" *ngIf="order">
 
   <form class="centered-box" *ngIf="!isChangeLinkActive">
 
@@ -14,9 +14,12 @@
       </div>
 
       <div class="form-group">
-        <button class="form-button white-button" type="button" routerLink="/users/dashboard/analytics">
-          Vidi analitiku
+        <button [disabled]="order.version === Version.BASIC" class="form-button white-button" type="button" routerLink="/users/dashboard/analytics">
+          Vidi skenove i poruke
         </button>
+        <small *ngIf="order.version === Version.BASIC">
+          Analitika je dostupna samo za Premium odjeću
+        </small>
       </div>
     </div>
 

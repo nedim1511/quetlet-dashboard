@@ -35,7 +35,7 @@
     </div>
 
     <ng-template #noScans>
-      <h1>Još uvijek nema skenova.</h1>
+      <h1>{{ didGetResponseFromServer ? 'Još uvijek nema skenova.' : 'Učitavanje...' }}</h1>
     </ng-template>
   </form>
 </div>

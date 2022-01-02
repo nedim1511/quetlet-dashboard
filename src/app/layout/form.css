@@ -39,8 +39,10 @@
 
 .form-button:disabled,
 .form-button[disabled]{
+  color: #fff;
+  border: none;
   cursor: default;
-  background: rgba(0, 0 ,0, 0.75);
+  background: rgba(0, 0 ,0, 0.5);
 }
 
 .form-content {
