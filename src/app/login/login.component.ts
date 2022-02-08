@@ -1,6 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {LoginService} from "./services/login.service";
 import {Router} from "@angular/router";
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
     '../layout/flexbox.css',
   ],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public pin: string | undefined;
   public emailAddress: string | undefined;
 
@@ -19,11 +20,17 @@ export class LoginComponent {
   public errorMessage: string | undefined;
 
   constructor(
+    private meta: Meta,
+    private title: Title,
     private router: Router,
     private loginService: LoginService,
   ) {
     this.isLoginSuccessful = false;
     this.loginButtonDisabled = false;
+  }
+
+  ngOnInit(): void {
+    this.setSEO();
   }
 
   public loginButtonClicked(): void {
@@ -59,5 +66,10 @@ export class LoginComponent {
   private setError(message: string): void {
     this.errorMessage = message;
     this.loginButtonDisabled = false;
+  }
+
+  private setSEO(): void {
+    this.title.setTitle('MyQuetlet | Promijeni link QR koda ili pogledaj analitiku');
+    this.meta.addTag({name: 'description', content: 'Službena aplikacija portala Quetlet za mijenjanje linka na koji vodi QR kod, kao i za korištenje Premium značajki poput praćenja analitike.'});
   }
 }
