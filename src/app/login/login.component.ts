@@ -33,7 +33,7 @@ export class LoginComponent {
     if (this.isFormValid()) {
       if (!this.emailAddress || !this.pin) return;
 
-      this.loginService.login(this.emailAddress, this.pin)
+      this.loginService.login(this.emailAddress.toLowerCase(), this.pin)
         .subscribe((order) => {
           this.isLoginSuccessful = true;
           this.loginService.setOrder(order);
