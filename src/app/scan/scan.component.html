@@ -14,7 +14,7 @@
       </div>
 
       <div class="vertical-margin">
-        <p>Otvaram link...</p>
+        <p>Opening link...</p>
       </div>
     </ng-container>
 
@@ -26,7 +26,7 @@
         </div>
 
         <textarea
-          [placeholder]="'Neće znati ko je poslao poruku, ali će je moći pročitati. Maksimalno 100 znakova.'"
+          [placeholder]="'Leave an anonymous message. Max 100 characters.'"
           [(ngModel)]="message"
           *ngIf="leaveMessage"
           name="message"
@@ -38,16 +38,16 @@
 
       <ng-container *ngIf="order.version !== Version.BASIC; else basicButton">
         <button *ngIf="!leaveMessage" class="form-button" (click)="leaveMessage = true">
-          Da, unesi poruku
+          Yes, leave a message
         </button>
 
         <button [disabled]="!order" class="form-button" [class.white-button]="!leaveMessage" (click)="submitScan()">
-          {{ leaveMessage ? 'Pošalji i' : 'Ne, samo' }} otvori link
+          {{ leaveMessage ? 'Send and' : 'No, just' }} open link
         </button>
       </ng-container>
 
       <button *ngIf="leaveMessage" [disabled]="!order" class="form-button white-button" (click)="submitScan()">
-        Otvori link bez poruke
+        Open link without messaging
       </button>
     </ng-container>
   </div>
@@ -55,6 +55,6 @@
 
 <ng-template #basicButton>
   <button [disabled]="!order" class="form-button" (click)="submitScan()">
-    Posjeti link
+    Visit link
   </button>
 </ng-template>

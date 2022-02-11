@@ -47,16 +47,16 @@ export class LoginComponent implements OnInit {
           setTimeout(() => {
             this.router.navigate(['/users/dashboard']);
           }, 1500);
-        }, (error) => this.setError(error?.error?.error ?? 'Pogrešna email adresa ili PIN.'))
+        }, (error) => this.setError(error?.error?.error ?? 'Wrong email address or PIN.'))
     }
   }
 
   private isFormValid(): boolean {
     if (!this.emailAddress) {
-      this.setError('Email adresa je obavezna.')
+      this.setError('Email address is required.')
       return false;
     } else if (!this.pin) {
-      this.setError('PIN je obavezan.');
+      this.setError('PIN is required.');
       return false;
     }
 
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
   }
 
   private setSEO(): void {
-    this.title.setTitle('MyQuetlet | Promijeni link QR koda ili pogledaj analitiku');
-    this.meta.addTag({name: 'description', content: 'Službena aplikacija portala Quetlet za mijenjanje linka na koji vodi QR kod, kao i za korištenje Premium značajki poput praćenja analitike.'});
+    this.title.setTitle('MyQuetlet | Change QR code link ili view analytics');
+    this.meta.addTag({name: 'description', content: 'Official application by Quetlet for changing links of QR codes on your clothes, and additional Premium features like analytics and messaging.'});
   }
 }

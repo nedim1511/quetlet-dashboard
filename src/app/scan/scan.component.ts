@@ -39,16 +39,16 @@ export class ScanComponent implements OnInit {
           this.isLoading = false;
           this.order = order;
         },
-        (error) => this.handleError(error?.error?.error ?? "Došlo je do greške prilikom dohvaćanja link-a."));
+        (error) => this.handleError(error?.error?.error ?? "There was an error while retrieving a link."));
     } else {
-      this.handleError('Skenirani kod mora sadržati šifru: https://myquetlet.com/šifra');
+      this.handleError('Scanned code must contain a code: https://myquetlet.com/code');
     }
   }
 
   public submitScan(): void {
 
     if (!this.order || !this.order.code || !this.order.activeUrl) {
-      this.handleError('Došlo je do greške prilikom skeniranja.');
+      this.handleError('There was an error while retrieving a link.');
       return;
     }
 
@@ -77,7 +77,7 @@ export class ScanComponent implements OnInit {
     if (!this.message) return true;
 
     if (this.message.length > 100) {
-      alert('Poruka ne smije imati više od 100 znakova!');
+      alert('Message must not contain more than 100 characters!');
       return false;
     }
 
@@ -86,9 +86,9 @@ export class ScanComponent implements OnInit {
 
   get welcomeMessageText(): string {
     if (this.order.version === Version.BASIC) {
-      return 'Klikni ispod da posjetiš link skenirane osobe';
+      return 'Click below to visit the link of the scanned person';
     }
-    return 'Želiš li ostaviti poruku skeniranoj osobi?'
+    return 'Do you want to send a message to the scanned person?'
   }
 
   get Version() {

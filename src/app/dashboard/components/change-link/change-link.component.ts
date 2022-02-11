@@ -49,14 +49,14 @@ export class ChangeLinkComponent {
         this.loginService.setOrder(order);
         this.assignAttributes();
       } else {
-        this.setError('Došlo je do greške. Molimo osvježite stranicu i pokušajte ponovo');
+        this.setError('There was an error. Please refresh the page and try again.');
       }
-    }, (error) => this.setError(error?.error?.error ?? 'Došlo je do greške. Molimo osvježite stranicu i pokušajte ponovo'));
+    }, (error) => this.setError(error?.error?.error ?? 'There was an error. Please refresh the page and try again.'));
   }
 
   private isNewLinkValid(): boolean {
     if (!this.newLink) {
-      this.setError('Novi link je obavezan.');
+      this.setError('New link is required.');
       return false;
     }
 
@@ -83,6 +83,6 @@ export class ChangeLinkComponent {
   private assignAttributes(): void {
     this.newLink = undefined;
     this.order = this.loginService.getOrder;
-    this.oldLink = "Trenutni link: " + this.order?.activeUrl;
+    this.oldLink = "Current link: " + this.order?.activeUrl;
   }
 }

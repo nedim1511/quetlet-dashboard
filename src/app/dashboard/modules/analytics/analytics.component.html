@@ -9,20 +9,20 @@
       <div class="tab" *ngFor="let scan of analyticsMap | keyvalue">
         <input [id]="scan.key" type="radio" name="analytics">
         <label class="tab-label" [attr.for]="scan.key">
-          {{ scan.key }} - Broj posjeta na link: {{ scan.value.length }}
+          {{ scan.key }} - Total link visits count: {{ scan.value.length }}
         </label>
         <div class="tab-content">
           <div class="responsive-table-wrapper">
             <table>
               <tr>
-                <th>Datum i vrijeme</th>
-                <th>Sistem</th>
-                <th>Uređaj</th>
-                <th>Pretraživač</th>
-                <th>Poruka</th>
+                <th>Date and Time</th>
+                <th>System</th>
+                <th>Device</th>
+                <th>Browser</th>
+                <th>Message</th>
               </tr>
               <tr *ngFor="let info of scan.value">
-                <td>{{ info.date | date: 'd MMM y, HH:mm' }}</td>
+                <td>{{ info.date | date: 'short' }}</td>
                 <td>{{ info.os }}</td>
                 <td>{{ info.device }}</td>
                 <td>{{ info.browser }}</td>
@@ -35,7 +35,7 @@
     </div>
 
     <ng-template #noScans>
-      <h1>{{ didGetResponseFromServer ? 'Još uvijek nema skenova.' : 'Učitavanje...' }}</h1>
+      <h1>{{ didGetResponseFromServer ? 'No scans yet.' : 'Loading...' }}</h1>
     </ng-template>
   </form>
 </div>

@@ -7,7 +7,7 @@
     <div class="form-content" *ngIf="!isLoginSuccessful">
       <!--Email Input-->
       <div class="form-group">
-        <input [(ngModel)]="emailAddress" required name="email" type="email" class="form-input" placeholder="Email adresa">
+        <input [(ngModel)]="emailAddress" required name="email" type="email" class="form-input" placeholder="Email address">
       </div>
 
       <!--Password Input-->
@@ -17,11 +17,11 @@
 
       <!--Login Button-->
       <button class="form-button" type="button" disabled [disabled]="loginButtonDisabled" (click)="loginButtonClicked()">
-        Prijavi se
+        Log In
       </button>
     </div>
 
-    <app-success-checkmark *ngIf="isLoginSuccessful" [text]="'Prijava uspješna.'"></app-success-checkmark>
+    <app-success-checkmark *ngIf="isLoginSuccessful" [text]="'Login successful.'"></app-success-checkmark>
 
   </form>
 </div>

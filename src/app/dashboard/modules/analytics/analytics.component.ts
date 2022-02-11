@@ -36,7 +36,7 @@ export class AnalyticsComponent implements OnInit {
       scans.forEach((scan) => this.analyticsMap.set(scan.url, scan.data));
       this.didGetResponseFromServer = true;
     }, (error) => {
-      this.handleError(error?.error?.error ?? 'Došlo je do nepoznate greške. Molimo osvježite stranicu');
+      this.handleError(error?.error?.error ?? 'There was an error. Please refresh the page.');
       this.didGetResponseFromServer = true;
     });
   }
