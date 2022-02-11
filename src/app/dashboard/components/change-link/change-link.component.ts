@@ -65,13 +65,13 @@ export class ChangeLinkComponent {
     try {
       url = new URL(this.newLink);
     } catch (_) {
-      this.setError('Link neispravan.<br>Napomena: Link treba počinjati sa http:// ili https://');
+      this.setError('Link invalid.<br>Note: Link has to start with http:// or https://');
       return false;
     }
 
     if (url.protocol === "http:" || url.protocol === "https:") return true;
 
-    this.setError('Link neispravan.<br>Napomena: Link treba počinjati sa http:// ili https://');
+    this.setError('Link invalid.<br>Note: Link has to start with http:// or https://');
     return false;
   }
 
